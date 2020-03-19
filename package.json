@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/samson212/you-can-reach-me-here/issues"
   },
-  "homepage": "https://github.com/samson212/you-can-reach-me-here#readme"
+  "homepage": "https://github.com/samson212/you-can-reach-me-here#readme",
+  "dependencies": {
+    "peerjs": "^1.2.0"
+  }
 }
