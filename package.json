@@ -1,0 +1,22 @@
+{
+  "name": "you-can-reach-me-here",
+  "version": "1.0.0",
+  "description": "Super simple WebRTC video chat site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samson212/you-can-reach-me-here.git"
+  },
+  "keywords": [
+    "WebRTC"
+  ],
+  "author": "Sam Lazarus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samson212/you-can-reach-me-here/issues"
+  },
+  "homepage": "https://github.com/samson212/you-can-reach-me-here#readme"
+}
