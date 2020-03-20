@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/samson212/you-can-reach-me-here#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "peerjs": "^1.2.0"
   }
 }
