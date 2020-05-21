@@ -18,18 +18,18 @@ import PeerRig from './modules/peerRig.js';
 	function placeCall() {
 		console.log("making the call");
 		if (me.peerReady && me.videoReady && you.peerId) {
+			// update the UI state
+			body.classList.add('calling');
+
+			// place the call!
+			currentCall = me.peer.call(you.peerId, me.stream);
+
 			// when we get the stream, attach it to the DOM
 			currentCall.on('stream', stream => {
 				you.attachStream(stream);
 				body.classList.remove('calling');
 				body.classList.add('on-call');
 			});
-
-			// update the UI state
-			body.classList.add('calling');
-
-			// we're ready, place the call!
-			currentCall = me.peer.call(you.peerId, me.stream);
 		} else {
 			if (!me.peerReady) {
 				console.log("!!! Peer not ready!");
