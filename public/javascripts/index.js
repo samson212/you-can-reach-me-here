@@ -81,7 +81,10 @@ import PeerRig from './modules/peerRig.js'
  	 * *************** */
 
 	// get the webcam video & mic audio, then update the UI state
-	me.acquireWebcamStream(stream => { body.classList.add('stream-ready') });
+	me.acquireWebcamStream(stream => {
+		console.log("Acquired webcam");
+		body.classList.add('stream-ready')
+	});
 
 	// once the peering & webcam are set up, the generate button will be displayed (handled in CSS)
 	document.querySelector('#generate').addEventListener('click', e => {
