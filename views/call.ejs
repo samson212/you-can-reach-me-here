@@ -16,6 +16,10 @@
 
 <style>
 
+body.on-call #call {
+	display: none;
+}
+
 </style>
 
 </head>
@@ -23,6 +27,11 @@
 
 
 <body>
+
+	<div id="messages">
+		<marquee class="video"><pre>Waiting for camera access...</pre></marquee>
+		<marquee class="peer"><pre>Waiting for network access...</pre></marquee>
+	</div>
 
 	<div id="videos">
 
@@ -38,7 +47,7 @@
 
 	</div>
 
-	<button id="call">Join</button>
+	<button id="call">Call</button>
 
 	<script>
 		// GLOBALS

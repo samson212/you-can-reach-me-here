@@ -1,8 +1,32 @@
-figure {
+body, figure {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 20px;
+}
+
+figure {
+	position: relative;
+	margin: 0;
+}
+
+figure label {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	color: white;
+	background: rgba(0,0,0, 0.5);
+	font-size: 60%;
+	padding: 0.25em 0;
+}
+
+body.on-call #videos {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
 }
 
 #me {
@@ -12,15 +36,9 @@ figure {
 }
 body.on-call figure.me {
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 20px;
+	right: 20px;
 	width: 20%;
-}
-body.calling figure.me {
-	display: none;
-}
-body.calling.interacting #me {
-	display: block;
 }
 
 #you {
@@ -28,9 +46,21 @@ body.calling.interacting #me {
 	max-width: 100vw;
 	max-height: 100vh;
 }
-body.calling #you {
+figure.you {
 	display: none;
 }
+body.on-call figure.you {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background: #000;
+}
+
 
 body.stream-ready #messages .video {
 	display: none;
