@@ -4,7 +4,8 @@
   "description": "Super simple WebRTC video chat site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,11 @@
   },
   "homepage": "https://github.com/samson212/you-can-reach-me-here#readme",
   "dependencies": {
+    "connect-redis": "^4.0.4",
+    "debug": "^4.1.1",
     "dotenv": "^8.2.0",
-    "peerjs": "^1.2.0"
+    "express-session": "^1.17.0",
+    "peerjs": "^1.2.0",
+    "redis": "^3.0.2"
   }
 }
