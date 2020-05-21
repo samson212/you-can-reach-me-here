@@ -13,10 +13,10 @@ app.set('view engine', 'ejs');
 app.use('/', express.static('public'));
 
 // ui for setting up a call
-app.get('/', (req, res) => res.render('index'));
+app.get('/', (req, res) => res.render('index', { myId: process.env.DEBUG_PEER_ID }));
 
 // ui for establishing a connection with a peer by id
-app.get('/:id', (req, res) => res.render('call', { id: req.params.id }));
+app.get('/:id', (req, res) => res.render('call', { id: req.params.id, myId: process.env.DEBUG_PEER_ID }));
 
 /*
 app.get("/api/peers", function(req, res) {  

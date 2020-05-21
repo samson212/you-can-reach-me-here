@@ -4,14 +4,18 @@ import PeerRig from './modules/peerRig.js'
 (() => {
 
 	/* *************** *
- 	 *    globals      *
- 	 * *************** */
+	 *    "globals"    *
+	 * *************** */
 
 	// get DOM elements
 	const body = document.querySelector('body'),
 	// and build the peer rigs
-		me = new PeerRig(document.getElementById('me'), document.getElementById('myId'), new Peer()),
-		you = new PeerRig(document.getElementById('you'), document.getElementById('yourId'));
+		me = new PeerRig(document.getElementById('me'),
+						 document.getElementById('myId'),
+						 MY_ID ? new Peer(MY_ID) : new Peer()),
+
+		you = new PeerRig(document.getElementById('you'),
+						  document.getElementById('yourId'));
 
 	let currentCall;
 

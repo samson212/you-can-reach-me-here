@@ -7,12 +7,12 @@ import PeerRig from './modules/peerRig.js';
 
 		me  = new PeerRig(document.getElementById('me'),
 						  document.getElementById('myId'),
-						  new Peer()),
+						  MY_ID ? new Peer(MY_ID) : new Peer()),
 
-		yourId = window.location.href.replace(/\/$/, '').replace(/.*\//, ''),
 		you = new PeerRig(document.getElementById('you'),
 						  document.getElementById('yourId'),
-						  yourId);
+			// this is added to global scope in the template
+						  YOUR_ID);
 	let currentCall;
 
 	function placeCall() {
