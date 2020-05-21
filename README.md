@@ -1,0 +1,3 @@
+# You Can Reach Me Here
+
+*You Can Reach Me Here* is a simple way to set up a video chat between two people. It doesn't do much! But it has no app to install, and you don't need the other person to be a member of any service. Just visit the site, click *chat*, then copy and send the provided link to whoever you're trying to reach through whatever means you prefer -- SMS, IRC, carrier pigeon, whatever! When they follow the link, you will be connected to them directly via WebRTC. Everything is encrypted end-to-end, and your communications don't go through our server, so you don't have to worry about G\*\*\*le or Sk\*\*e listening in!

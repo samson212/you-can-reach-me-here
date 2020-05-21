@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>You Can Reach Me Here</title>
+
+<script src="https://cdn.jsdelivr.net/npm/peerjs@0.3.20/dist/peer.min.js"></script>
+
+<style>
+
+video {
+	position: absolute;
+	top: 0;
+}
+
+#me {
+	transform: scaleX(-1);
+	right: 0;
+	width: 20%;
+}
+body.calling #me {
+	display: none;
+}
+body.calling.interacting #me {
+	display: block;
+}
+
+#you {
+	width: 100%;
+	max-width: 100vw;
+	max-height: 100vh;
+}
+body.calling #you {
+	display: none;
+}
+
+#url, #generate {
+	display: none;
+}
+
+body.peer-ready.stream-ready #generate {
+	display: block;
+}
+
+body.call-ready #url {
+	display: block;
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+	<pre id="messages">
+		<marquee class="video">Waiting for camera access...</marquee>
+		<marquee class="peer">Waiting for network access...</marquee>
+	</pre>
+
+	<div id="videos">
+
+		<figure class="me">
+			<video id="me" muted="true"></video>
+			<label id="myId"></label>
+		</figure>
+
+		<figure class="you">
+			<video id="you"></video>
+			<label id="yourId"></label>
+		</figure>
+
+	</div>
+
+	<button id="generate">Generate URL</button>
+	<a id="url">Copy this link!<a> (<pre id="copy-text"></pre>)
+
+	<script src="javascripts/index.js" type="module"></script>
+
+</body>
+
+</html>
