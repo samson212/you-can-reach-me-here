@@ -7,7 +7,7 @@ import PeerRig from './modules/peerRig.js';
 
 		me  = new PeerRig(document.getElementById('me'),
 						  document.getElementById('myId'),
-						  new Peer({ host: '/', path: '/peer' })),
+						  new Peer()),
 
 		yourId = window.location.href.replace(/\/$/, '').replace(/.*\//, ''),
 		you = new PeerRig(document.getElementById('you'),
