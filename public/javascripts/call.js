@@ -1,8 +1,6 @@
 
 import PeerRig from './modules/peerRig.js';
 
-const globalVar = "this is global!";
-
 (() => {
 
 	const body = document.querySelector('body'),

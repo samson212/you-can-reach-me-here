@@ -10,7 +10,7 @@ import PeerRig from './modules/peerRig.js'
 	// get DOM elements
 	const body = document.querySelector('body'),
 	// and build the peer rigs
-		me = new PeerRig(document.getElementById('me'), document.getElementById('myId'), new Peer({ host: '/', path: '/peer' })),
+		me = new PeerRig(document.getElementById('me'), document.getElementById('myId'), new Peer()),
 		you = new PeerRig(document.getElementById('you'), document.getElementById('yourId'));
 
 	let currentCall;
@@ -35,7 +35,7 @@ import PeerRig from './modules/peerRig.js'
 		body.classList.remove('peer-ready');
 	});
 
-	// when a call is made, answer it!
+	// when an incoming call is received, answer it!
 	me.peer.on('call', function(call) {
 		if (!currentCall) {
 			// set the label ui and save the peer id
