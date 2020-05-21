@@ -92,13 +92,13 @@ import PeerRig from './modules/peerRig.js'
 	});
 
 	// once the peering & webcam are set up, the generate button will be displayed (handled in CSS)
-	document.querySelector('#generate').addEventListener('click', e => {
+	document.querySelector('#generate button').addEventListener('click', e => {
 
 		// compose the call URL
-		const url = location.host+'/'+me.id;
+		const url = location.host+'/'+me.peer.id;
 
 		// set the link's target 
-		document.querySelector('#url').href = url;
+		document.querySelector('#copy-text').href = url;
 		
 		// display the URL in the DOM for copying
 		document.querySelector('#copy-text').innerText = url;
@@ -106,5 +106,7 @@ import PeerRig from './modules/peerRig.js'
 		// update the UI state
 		body.classList.add('call-ready');
 	});
+
+	new ClipboardJS('#generate .call-url button');
 
 })();

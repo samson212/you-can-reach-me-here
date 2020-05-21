@@ -12,33 +12,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/peerjs@0.3.20/dist/peer.min.js"></script>
 
+<link rel="stylesheet" type="text/css" href="/stylesheets/base.css" />
+
 <style>
-
-video {
-	position: absolute;
-	top: 0;
-}
-
-#me {
-	transform: scaleX(-1);
-	right: 0;
-	width: 20%;
-}
-body.calling #me {
-	display: none;
-}
-body.calling.interacting #me {
-	display: block;
-}
-
-#you {
-	width: 100%;
-	max-width: 100vw;
-	max-height: 100vh;
-}
-body.calling #you {
-	display: none;
-}
 
 </style>
 
@@ -50,14 +26,14 @@ body.calling #you {
 
 	<div id="videos">
 
-		<figure class="me">
-			<video id="me" muted="true"></video>
-			<label id="myId"></label>
-		</figure>
-
 		<figure class="you">
 			<video id="you"></video>
 			<label id="yourId"></label>
+		</figure>
+
+		<figure class="me">
+			<video id="me" muted="true"></video>
+			<label id="myId"></label>
 		</figure>
 
 	</div>
