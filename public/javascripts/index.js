@@ -37,6 +37,7 @@ import PeerRig from './modules/peerRig.js'
 
 	// when an incoming call is received, answer it!
 	me.peer.on('call', function(call) {
+		console.log("got a call: ", call);
 		if (!currentCall) {
 			// set the label ui and save the peer id
 			you.peerId = call.peer;

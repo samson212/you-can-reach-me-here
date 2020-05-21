@@ -16,7 +16,7 @@ import PeerRig from './modules/peerRig.js';
 	let currentCall;
 
 	function placeCall() {
-		console.log("placeCall()");
+		console.log("making the call");
 		if (me.peerReady && me.videoReady && you.peerId) {
 			// when we get the stream, attach it to the DOM
 			currentCall.on('stream', stream => {
@@ -46,14 +46,17 @@ import PeerRig from './modules/peerRig.js';
 		}
 	}
 
-	// get the webcam video & mic audio
+	// get the webcam video & mic audio; update the UI
 	me.acquireWebcamStream(stream => {
-		// set the UI state
+		console.log("Acquired webcam");
 		body.classList.add('stream-ready');
 	});
 
 	// when the connection to the signalling server is open, update the UI
-	me.peer.on('open', id => { body.classList.add('peer-ready') });
+	me.peer.on('open', id => {
+		console.log("Connection opened, got id "+id);
+		body.classList.add('peer-ready')
+	});
 
 	me.peer.on('call', function(call) {
 		console.log("incoming call??", call);
