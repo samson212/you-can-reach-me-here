@@ -7,17 +7,17 @@ services:
       test: service nginx status
       interval: 5s
     volumes:
-        #- dhparam:/etc/nginx/dhparam
-        #- vhost:/etc/nginx/vhost.d
+      - dhparam:/etc/nginx/dhparam
+      - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
-      - certs:/etc/nginx/certs
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs:/etc/nginx/certs
+      - /run/docker.sock:/tmp/docker.sock:ro
     restart: always
     # networks:
     #   - net
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
 
   youcanreach-acme:
     image: nginxproxy/acme-companion
@@ -27,7 +27,7 @@ services:
     volumes_from:
       - youcanreach-proxy
     volumes:
-      - certs:/etc/nginx/certs:rw
+      - ./certs:/etc/nginx/certs:rw
       - acme:/etc/acme.sh
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
@@ -38,21 +38,25 @@ services:
     user: node
     working_dir: /home/node/app
     environment:
-      VIRTUAL_HOST: local.youcanreachme.at
+      VIRTUAL_HOST: youcanreachme.at
       VIRTUAL_PORT: ${REACHME_PORT:-9000}
+      LETSENCRYPT_HOST: youcanreachme.at
+      LETSENCRYPT_EMAIL: lazarus.sam@gmail.com
+      PORT: ${REACHME_PORT:-9000}
       NODE_ENV: development
       DEBUG: "ycrmh:*"
+    build:
+      context: reachme
+      dockerfile: Dockerfile
     restart: always
     volumes:
       - ./reachme:/home/node/app
         #- youcanreachme-node_modules:/home/node/app/node_modules
-    ports:
-      - "${REACHME_PORT:-9000}:${REACHME_PORT:-9000}"
 
 volumes:
   youcanreachme-node_modules:
-  html:
   dhparam:
   vhost:
+  html:
   certs:
   acme:
