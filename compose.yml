@@ -1,0 +1,58 @@
+services:
+
+  youcanreach-proxy:
+    image: nginxproxy/nginx-proxy
+    container_name: youcanreach-proxy
+    healthcheck:
+      test: service nginx status
+      interval: 5s
+    volumes:
+        #- dhparam:/etc/nginx/dhparam
+        #- vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - certs:/etc/nginx/certs
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    restart: always
+    # networks:
+    #   - net
+    ports:
+      - 80:80
+      - 443:443
+
+  youcanreach-acme:
+    image: nginxproxy/acme-companion
+    container_name: youcanreach-acme
+    environment:
+      - DEFAULT_EMAIL=lazarus.sam@gmail.com
+    volumes_from:
+      - youcanreach-proxy
+    volumes:
+      - certs:/etc/nginx/certs:rw
+      - acme:/etc/acme.sh
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  youcanreachme:
+    image: node:24
+    container_name: youcanreachme
+    tty: true
+    user: node
+    working_dir: /home/node/app
+    environment:
+      VIRTUAL_HOST: local.youcanreachme.at
+      VIRTUAL_PORT: ${REACHME_PORT:-9000}
+      NODE_ENV: development
+      DEBUG: "ycrmh:*"
+    restart: always
+    volumes:
+      - ./reachme:/home/node/app
+        #- youcanreachme-node_modules:/home/node/app/node_modules
+    ports:
+      - "${REACHME_PORT:-9000}:${REACHME_PORT:-9000}"
+
+volumes:
+  youcanreachme-node_modules:
+  html:
+  dhparam:
+  vhost:
+  certs:
+  acme:
